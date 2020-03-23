@@ -1,0 +1,105 @@
+{% extends 'studentfeetemp.html' %}
+<html>
+<head>
+<title>Fee Submisson form</title>
+<link href="../static/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% block m1 %}
+<div class="container container-fluid">
+     <h1>Fee Submission Form</h1>
+    {% if data %}
+    <h4>{{ data }}</h4>
+    {% endif %}
+    <form action="../addstudent/" method="post" class="was-validated">
+        {% csrf_token %}
+    <div class="form-group">
+    Name:
+    <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="form-group">
+    Email:
+    <input type="email" class="form-control" name="email" required>
+    </div>
+    <div class="form-group">
+    Colleg Id:
+    <input type="text" class="form-control" name="collegeid" required>
+    </div>
+    Sex:
+    <div class="form-check-inline" style="margin-left:20px">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="sex" value="male">male  </label>
+   </div>
+      <div class="form-check-inline">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="sex" value="female">female  </label> 
+   </div>
+   <div class="form-check-inline">
+        <label class="form-check-label">
+         <input type="radio" class="form-check-input" name="sex" value="other">other  </label>
+</div>
+   <div class="form-group">
+   Course:
+   <select class="form-control" id="sel1" name="course">
+    <option>B.tech</option>
+    <option>M.Tech</option>
+    <option>MBA</option>
+    <option>MCA</option>
+  </select>
+   </div>
+   <div class="form-group">
+   Branch:
+   <select class="form-control" id="sel2" name="branch">
+    <option>Computer Science and Information Technology</option>
+    <option>Civil Engineering</option>
+    <option>Electrical Engineering</option>
+    <option>Electronic Instrumentation And Control Engineering</option>
+    <option>Electronics and Communication Engineering</option>
+    <option>Humanities and Social Science</option>
+    <option>Mechanical Engineering</option>
+  </select>
+   </div>
+   <div class="form-group">
+   Semester:
+   <select class="form-control" id="sel3" name="semester">
+    <option>I</option>
+    <option>II</option>
+    <option>III</option>
+    <option>IV</option>
+    <option>V</option>
+    <option>VI</option>
+    <option>VII</option>
+    <option>VII</option>
+  </select>
+   </div>
+   
+    <div class="form-group">
+    Fees:
+    <input type="text" class="form-control" name="fee" required>
+    </div>
+    <div class="form-group">
+    Paid:
+    <input type="text" class="form-control" name="paid" required>
+    </div>
+    <div class="form-group">
+    Due:
+    <input type="text" class="form-control" name="due" required>
+    </div>
+    <div class="form-group">
+    Address:
+    <textarea class="form-control" name="address"></textarea>
+    </div>
+    <div class="form-group">
+    Contact:
+    <input type="text" class="form-control" name="contact">
+    </div>
+     <div class="form-group">
+    Date:
+    <input type="date" class="form-control" name="date"><br>
+     </div>
+    <button type="submit" class="btn btn-primary" style="margin-left:100px">Add Student</button>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'adminfeetemp.html' %}
+<html>
+<head>
+<title>Edit Accountant</title>
+<link href="../static/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% block b1 %}
+<div class="container container-fluid">
+     <h1>Edit Accounted Form</h1>
+    {% if data %}
+    <form action="../editacc/" method="post">
+        {% for k in data %}
+        {% csrf_token %}
+
+    <div class="form-group">
+    Name:
+    <input type="text" class="form-control" name="name" value="{{ k.name }}">
+    </div>
+    <div class="form-group">
+    Email:
+    <input type="email" class="form-control" name="email" value="{{ k.email }}" readonly>
+    </div>
+    <div class="form-group">
+    Password:
+    <input type="password" class="form-control" name="password" value="{{ k.password }}" readonly>
+    </div>
+    <div class="form-group">
+    Address:
+        <input class="form-control"  name="address" value="{{ k.address }}">
+    </div>
+    <div class="form-group">
+    Contact:
+    <input type="text" class="form-control" name="contact" value="{{ k.contact }}">
+    </div><br>
+    <button type="submit" class="btn btn-primary" style="margin-left:100px">Edit Accountant</button>
+    {% endfor %}
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
+</body>
+</html>

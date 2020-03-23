@@ -1,0 +1,25 @@
+{% extends 'studentfeetemp.html' %}
+<html>
+<head>
+<title>Student Search</title>
+<link href="../static/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% block m1 %}
+
+
+<div class="container-fluid" style="font-size:36px">
+<form method="post" action="../searchstudent/">
+  {% csrf_token %}
+  <div class="form-group">
+  College Id.:<input type="search" class="form-control" name="rollno">
+  </div>
+  <button type="submit"  class="btn btn-primary">search student</button>
+</form>
+{% if data1 %}
+  <h1>{{ data1 }}</h1>
+{% endif %}
+</div>
+{% endblock %}
+</body>
+</html>

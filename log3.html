@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>welocome page</title>
+<link href="../static/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container-fluid bg-dark" style="height:43px">
+   <div class="row">
+      <div class="col-2">
+         <h4 class="text-white">FeePortal</h4>
+      </div>
+      <div class="col-2">
+        <a href="/login/" class="btn text-white btn-outline-dark">Home</a>
+      </div>
+   </div>
+</div>
+<div class="container container-fluid" style="margin-top:50px;height:570px">
+    <div class="row">
+           <div class="col-6">
+           <h1 style="padding-left:20px">Admin Login Form</h1>
+             <form action="../login/" method="post">
+                 {% csrf_token %}
+                <div class="form-group">
+                Email:
+                <input type="email" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                Password:
+                <input type="password" class="form-control" name="password">
+                </div>
+                <button  style="margin-left:60px;"type="submit" class="btn btn-primary">Login</button>
+                   {% if data %}
+                   <h4>{{ data }}</h4>
+                   {% endif %}
+             </form>
+           </div>
+           <div class="col-6">
+           <h1>Accountant Login Form</h1>
+               <form action="../logacc/" method="post">
+                   {% csrf_token %}
+                <div class="form-group">
+                Email:
+                <input type="email" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                Password:
+                <input type="password" class="form-control" name="password">
+                </div>
+                <button style="margin-left:60px;" type="submit" class="btn btn-primary">Login</button>
+                   {% if data1 %}
+                   <h4>{{ data1 }}</h4>
+                   {% endif %}
+               </form>
+           </div>
+    </div>
+</div>
+<div class="container-fluid bg-dark text-white" style="height:80px">
+    <h3 style="text-align:center; line-height:80px">@2019 copyRight by RTU</h3>
+<div>
+</body>
+</html>

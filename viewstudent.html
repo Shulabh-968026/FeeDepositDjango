@@ -1,0 +1,67 @@
+{% extends 'studentfeetemp.html' %}
+<html>
+<head>
+<title>View Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../static/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% block m1 %}
+{% if data %}
+<div class="container-fluid" style="width:100%">
+<h2>View Student</h2>
+  <table class="table table-striped table-bordered">
+     <thead class="thead thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>College Id</th>
+          <th>Sex</th>
+          <th>Course</th>
+          <th>Branch</th>
+          <th>Semester</th>
+          <th>Fee</th>
+          <th>Paid Fee</th>
+          <th>Due Fee</th>
+          <th>Address</th>
+          <th>Contact</th>
+          <th>Date</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+     </thead>
+      {% for k in data %}
+     <tbody>
+        <tr>
+           <td>{{ k.name }}</td>
+           <td>{{ k.email }}</td>
+           <td>{{ k.collegeid }}</td>
+           <td>{{ k.sex }}</td>
+           <td>{{ k.course }}</td>
+           <td>{{ k.branch }}</td>
+           <td>{{ k.semester }}</td>
+           <td>{{ k.fee }}</td>
+           <td>{{ k.paid }}</td>
+           <td>{{ k.due }}</td>
+           <td>{{ k.address }}</td>
+           <td>{{ k.contact }}</td>
+           <td>{{ k.date }}</td>
+            <td> <form method="post" action="../editstudent/">
+               {% csrf_token %}
+                <input type="hidden" name="E1" value="{{ k.collegeid }}">
+                <input type="submit" value="Edit Student">
+                </form></td>
+            <td><form method="post" action="../deletestudent/">
+                {% csrf_token %}
+                <input type="hidden" name="D1" value="{{ k.collegeid }}">
+                <input type="submit" value="Delete Student">
+                </form></td>
+        </tr>
+     </tbody>
+      {% endfor %}
+  </table>
+    {% endif %}
+</div>
+{% endblock %}
+</body>
+</html>

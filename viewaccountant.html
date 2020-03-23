@@ -1,0 +1,50 @@
+{% extends 'adminfeetemp.html' %}
+<html>
+<head>
+<title>View Accountant</title>
+<link href="../static/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% block b1 %}
+{% if data %}
+<div class="container-fluid">
+<h2>View Accountant</h2>
+  <table class="table table-striped table-bordered">
+     <thead class="thead thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Address</th>
+          <th>Contact</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+     </thead>
+      {% for k in data %}
+     <tbody>
+        <tr>
+           <td>{{ k.name }}</td>
+           <td>{{ k.email }}</td>
+           <td>{{ k.password }}</td>
+           <td>{{ k.address }}</td>
+           <td>{{ k.contact }}</td>
+           <td> <form method="post" action="../editaccountant/">
+               {% csrf_token %}
+                <input type="hidden" name="E1" value="{{ k.email }}">
+                <input type="submit" value="Edit Accounant">
+                </form></td>
+            <td><form method="post" action="../deleteaccountant/">
+                {% csrf_token %}
+                <input type="hidden" name="D1" value="{{ k.email }}">
+                <input type="submit" value="Delete Accountant">
+                </form></td>
+        </tr>
+     </tbody>
+      {% endfor %}
+  </table>
+</div>
+{% endif %}
+{% endblock %}
+</body>
+</html>
