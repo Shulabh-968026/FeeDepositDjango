@@ -1,0 +1,17 @@
+This is simple fee management Application
+
+User Two Type 
+1.Admin
+2.accountant
+ Admin functions
+   1.Add Accountant
+   2.Delete Accountant
+   3.Edit Accountant
+   4.Logout
+ 2.Accountant
+   1.Fee submit 
+   2.Edit student details
+   3.Delete Student
+   4.search student which have due fee
+   5.search any student by college id
+   6.Logout
