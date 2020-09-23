@@ -1,4 +1,7 @@
 This is simple fee management Application
+#database user sqlite
+#data fetch from database
+#bootstrap , java scripts and jquery used as frond end language
 
 User Two Type 
 1.Admin
