@@ -11,6 +11,7 @@ from django.core.mail import send_mail, BadHeaderError
 
 
 # Create your views here.
+#login from user
 def login(request):
     if request.method=='POST':
         e1=request.POST['email']
@@ -27,6 +28,7 @@ def login(request):
             return render(request,'log3.html',{'data':"You are not Admin"})
     else:
         return render(request,'log3.html')
+#login by accountant
 def logacc(request):
     if request.method=='POST':
         e1=request.POST['email']
@@ -43,6 +45,7 @@ def logacc(request):
             return render(request, 'log3.html', {'data1': "you are not Accountant"})
     else:
         return render(request,'log3.html')
+#logout function
 def logout(request):
     try:
         del request.session['email']
@@ -50,7 +53,7 @@ def logout(request):
     except:
         pass
     return HttpResponseRedirect('/login/')
-
+#admin main function call
 def adminhome(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -60,6 +63,7 @@ def adminhome(request):
             return render(request,'error.html')
     else:
          return render (request,'error.html')
+#accountant main function
 def accountanthome(request):
     if request.session.has_key ('usertype'):
         ut = request.session['usertype']
@@ -69,6 +73,7 @@ def accountanthome(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
+#added accountant function 
 def addaccountant(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -98,7 +103,8 @@ def addaccountant(request):
             return render(request,'error.html')
     else:
         return render(request,'error.html')
-def viewaccountant(request):
+#view all accountant function
+ def viewaccountant(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
         if ut=='admin':
@@ -108,7 +114,7 @@ def viewaccountant(request):
             return render(request, 'error.html')
     else:
         return render(request,'error.html')
-
+#find accountant by email id for edit
 def editaccountant(request):
     if request.session.has_key('usertype'):
         ut = request.session['usertype']
@@ -123,6 +129,7 @@ def editaccountant(request):
             return render(request,'error.html')
     else:
         return render(request, 'error.html')
+#edit accountant 
 def editacc(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -147,6 +154,7 @@ def editacc(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
+#delete accounant find by email id
 def deleteaccountant(request):
     if request.session.has_key('usertype'):
         ut = request.session['usertype']
@@ -161,6 +169,7 @@ def deleteaccountant(request):
             return render(request,'error.html')
     else:
         return render(request, 'error.html')
+#accountant delete 
 def delaccountant(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -191,6 +200,7 @@ def delaccountant(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
+#add student function for fee deposit 
 def addstudent(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -231,6 +241,7 @@ def addstudent(request):
             return render(request,'error.html')
     else:
         return render(request,'error.html')
+#edit student find by college id
 def editstudent(request):
     if request.session.has_key('usertype'):
         ut = request.session['usertype']
@@ -245,6 +256,7 @@ def editstudent(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
+#edit student details
 def editstud(request):
     if request.session.has_key('usertype'):
         ut = request.session['usertype']
@@ -285,6 +297,7 @@ def editstud(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
+#student find by college id for delete
 def deletestudent(request):
     if request.session.has_key('usertype'):
         ut = request.session['usertype']
@@ -299,6 +312,7 @@ def deletestudent(request):
             return render(request,'error.html')
     else:
         return render(request, 'error.html')
+ #delete student
 def delstudent(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -339,7 +353,7 @@ def delstudent(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
-
+#view all students
 def viewstudent(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -350,6 +364,7 @@ def viewstudent(request):
             return render(request, 'error.html')
     else:
         return render(request,'error.html')
+#view all due fee student function
 def duefee(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -363,7 +378,7 @@ def duefee(request):
     else:
         return render(request,'error.html')
 
-
+#search student by college id function
 def searchstudent(request):
     if request.session.has_key('usertype'):
         ut=request.session['usertype']
@@ -382,6 +397,7 @@ def searchstudent(request):
             return render(request, 'error.html')
     else:
         return render(request, 'error.html')
+#send fee recepit to student email function
 def send_email(request):
     subject = "Student fee Receipt"
     message = """<html><body><table><tr><th>Name</th><th>Email</th><th>College Id</th>
@@ -398,10 +414,10 @@ def send_email(request):
           <th>Edit</th>
           <th>Delete</th>
         </tr> </table></body></html>"""
-    from_email = "shulabhdixit143@gmail.com"
+    from_email = "sender@gmail.com"
     if subject and message and from_email:
         try:
-            send_mail(subject, message, from_email, ['rrjrahul27@gmail.com'])
+            send_mail(subject, message, from_email, ['receiver@gmail.com'])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         #return HttpResponseRedirect('/contact/thanks/')
